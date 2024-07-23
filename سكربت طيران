@@ -1,0 +1,182 @@
+-- إعداد واجهة المستخدم
+local screenGui = Instance.new("ScreenGui")
+local initialFrame = Instance.new("Frame")
+local lblPrompt = Instance.new("TextLabel")
+local btnYes = Instance.new("TextButton")
+local btnNo = Instance.new("TextButton")
+
+-- إعداد واجهة المستخدم للطيران والسرعة
+local flightFrame = Instance.new("Frame")
+local btnFly = Instance.new("TextButton")
+local lblCreator = Instance.new("TextLabel")
+local btnIncreaseSpeed = Instance.new("TextButton")
+local lblSpeed = Instance.new("TextLabel")
+local btnDecreaseSpeed = Instance.new("TextButton")
+local btnClose = Instance.new("TextButton")
+local btnMinimize = Instance.new("TextButton")
+local btnMaximize = Instance.new("TextButton")
+
+-- إعداد واجهة المستخدم الرئيسية
+screenGui.Name = "MainUI"
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+screenGui.ResetOnSpawn = false
+
+-- إعداد إطار القائمة الأولية
+initialFrame.Parent = screenGui
+initialFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+initialFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+initialFrame.Position = UDim2.new(0.35, 0, 0.35, 0)
+initialFrame.Size = UDim2.new(0, 300, 0, 150)
+
+lblPrompt.Name = "lblPrompt"
+lblPrompt.Parent = initialFrame
+lblPrompt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+lblPrompt.Size = UDim2.new(1, 0, 0.6, 0)
+lblPrompt.Font = Enum.Font.SourceSans
+lblPrompt.Text = "هل تريد تشغيل سكربت السرعة؟"
+lblPrompt.TextColor3 = Color3.fromRGB(0, 0, 0)
+lblPrompt.TextScaled = true
+lblPrompt.TextWrapped = true
+
+btnYes.Name = "btnYes"
+btnYes.Parent = initialFrame
+btnYes.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+btnYes.Position = UDim2.new(0.2, 0, 0.7, 0)
+btnYes.Size = UDim2.new(0, 80, 0, 40)
+btnYes.Font = Enum.Font.SourceSans
+btnYes.Text = "نعم"
+btnYes.TextColor3 = Color3.fromRGB(0, 0, 0)
+btnYes.TextScaled = true
+
+btnNo.Name = "btnNo"
+btnNo.Parent = initialFrame
+btnNo.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+btnNo.Position = UDim2.new(0.6, 0, 0.7, 0)
+btnNo.Size = UDim2.new(0, 80, 0, 40)
+btnNo.Font = Enum.Font.SourceSans
+btnNo.Text = "لا"
+btnNo.TextColor3 = Color3.fromRGB(0, 0, 0)
+btnNo.TextScaled = true
+
+-- إعداد واجهة المستخدم للطيران والسرعة
+local function createFlightUI()
+    flightFrame.Parent = screenGui
+    flightFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    flightFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    flightFrame.Position = UDim2.new(0.1, 0, 0.38, 0)
+    flightFrame.Size = UDim2.new(0, 190, 0, 57)
+
+    btnFly.Name = "btnFly"
+    btnFly.Parent = flightFrame
+    btnFly.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    btnFly.Position = UDim2.new(0.70, 0, 0.49, 0)
+    btnFly.Size = UDim2.new(0, 56, 0, 28)
+    btnFly.Font = Enum.Font.Michroma
+    btnFly.Text = "طيران"
+    btnFly.TextColor3 = Color3.fromRGB(0, 0, 0)
+    btnFly.TextSize = 14
+
+    lblCreator.Parent = flightFrame
+    lblCreator.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    lblCreator.Position = UDim2.new(0.47, 0, 0, 0)
+    lblCreator.Size = UDim2.new(0, 100, 0, 28)
+    lblCreator.Font = Enum.Font.Michroma
+    lblCreator.Text = "من صنع 3ds9"
+    lblCreator.TextColor3 = Color3.fromRGB(0, 0, 0)
+    lblCreator.TextScaled = true
+    lblCreator.TextSize = 14
+    lblCreator.TextWrapped = true
+
+    btnIncreaseSpeed.Name = "btnIncreaseSpeed"
+    btnIncreaseSpeed.Parent = flightFrame
+    btnIncreaseSpeed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    btnIncreaseSpeed.Position = UDim2.new(0.23, 0, 0, 0)
+    btnIncreaseSpeed.Size = UDim2.new(0, 45, 0, 28)
+    btnIncreaseSpeed.Font = Enum.Font.SourceSans
+    btnIncreaseSpeed.Text = "+"
+    btnIncreaseSpeed.TextColor3 = Color3.fromRGB(0, 0, 0)
+    btnIncreaseSpeed.TextScaled = true
+
+    lblSpeed.Name = "lblSpeed"
+    lblSpeed.Parent = flightFrame
+    lblSpeed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    lblSpeed.Position = UDim2.new(0.47, 0, 0.49, 0)
+    lblSpeed.Size = UDim2.new(0, 44, 0, 28)
+    lblSpeed.Font = Enum.Font.SourceSans
+    lblSpeed.Text = "1"
+    lblSpeed.TextColor3 = Color3.fromRGB(0, 0, 0)
+    lblSpeed.TextScaled = true
+
+    btnDecreaseSpeed.Name = "btnDecreaseSpeed"
+    btnDecreaseSpeed.Parent = flightFrame
+    btnDecreaseSpeed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    btnDecreaseSpeed.Position = UDim2.new(0.23, 0, 0.49, 0)
+    btnDecreaseSpeed.Size = UDim2.new(0, 45, 0, 29)
+    btnDecreaseSpeed.Font = Enum.Font.SourceSans
+    btnDecreaseSpeed.Text = "-"
+    btnDecreaseSpeed.TextColor3 = Color3.fromRGB(0, 0, 0)
+    btnDecreaseSpeed.TextScaled = true
+
+    btnClose.Name = "btnClose"
+    btnClose.Parent = flightFrame
+    btnClose.BackgroundColor3 = Color3.fromRGB(255, 5, 5)
+    btnClose.Font = "Michroma"
+    btnClose.Size = UDim2.new(0, 45, 0, 28)
+    btnClose.Text = "x"
+    btnClose.TextSize = 30
+
+    btnMinimize.Name = "btnMinimize"
+    btnMinimize.Parent = flightFrame
+    btnMinimize.BackgroundColor3 = Color3.fromRGB(117, 117, 117)
+    btnMinimize.Font = "Michroma"
+    btnMinimize.Size = UDim2.new(0, 45, 0, 28)
+    btnMinimize.Text = "-"
+    btnMinimize.TextSize = 40
+
+    btnMaximize.Name = "btnMaximize"
+    btnMaximize.Parent = flightFrame
+    btnMaximize.BackgroundColor3 = Color3.fromRGB(117, 117, 117)
+    btnMaximize.Font = "SourceSans"
+    btnMaximize.Size = UDim2.new(0, 45, 0, 28)
+    btnMaximize.Text = "+"
+    btnMaximize.TextSize = 40
+    btnMaximize.Visible = false
+
+    -- متغيرات تحكم الطيران
+    local flightEnabled = false
+    local flightSpeed = 1
+    local player = game.Players.LocalPlayer
+    local character = player.Character
+    local humanoid = character and character:FindFirstChildWhichIsA("Humanoid")
+
+    -- وظيفة لتبديل حالة الطيران
+    btnFly.MouseButton1Click:Connect(function()
+        flightEnabled = not flightEnabled
+        if flightEnabled then
+            humanoid.PlatformStand = true
+            while flightEnabled do
+                local moveDirection = humanoid.MoveDirection
+                if moveDirection.Magnitude > 0 then
+                    character:TranslateBy(moveDirection * flightSpeed)
+                end
+                wait()
+            end
+        else
+            humanoid.PlatformStand = false
+        end
+    end)
+
+    -- وظيفة لزيادة السرعة
+    btnIncreaseSpeed.MouseButton1Click:Connect(function()
+        flightSpeed = flightSpeed + 1
+        lblSpeed.Text = tostring(flightSpeed)
+    end)
+
+    -- وظيفة لتقليل السرعة
+    btnDecreaseSpeed.MouseButton1Click:Connect(function()
+        flightSpeed = math.max(flightSpeed - 1, 1)
+        lblSpeed.Text = tostring(flightSpeed)
+    end)
+
+    -- وظيفة لإغلاق واجهة المستخدم
